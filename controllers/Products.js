@@ -2,15 +2,14 @@ import Products  from "../models/ProductModel.js";
 
 export const getProducts = async (req, res) => {
     try {
-        console.log('Start getProducts');
-
         const carsData = await Products.findAll({
             attributes: ['uuid', 'plate', 'manufacture', 'model', 'image', 'rentPerDay', 'capacity', 'description'],
         });
 
         console.log('Cars Data:', carsData);
 
-        res.status(200).json({ carsData });
+        // res.status(200).json({ products: carsData });
+        res.render('index.ejs', { products: carsData });
     } catch (error) {
         console.error('Error:', error.message);
         res.status(500).json({ msg: error.message });
