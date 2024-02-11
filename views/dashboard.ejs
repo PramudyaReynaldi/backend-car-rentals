@@ -50,20 +50,24 @@
                     <div class="tab-pane container active" id="dashboard">Dashboard</div>
                     <div class="tab-pane container fade" id="cars">
                         <div class="nav-list-cars">
-                            <p class="fw-bold">Cars > <span class="fw-medium">List Cars</span></p>
+                            <p class="fw-bold nav-cars">Cars > <span class="fw-medium">List Cars</span></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h3 class="fw-bold">List Cars</h3>
+                                <a href="/cars/add" class="btn btn-primary">+ Add New Car</a>
+                            </div>
                             <div class="row">
                                 <% products.forEach(product => { %>
-                                    <div class="col-3">
-                                        <div class="card">
-                                            <img src="<%= product.image %>" class="card-img-top" alt="<%= product.model %>">
+                                    <div class="col-3 mb-3">
+                                        <div class="card h-100">
+                                            <img src="<%= product.image %>" class="img-fluid" alt="<%= product.model %>">
                                             <div class="card-body">
-                                                <h5 class="card-title"><%= product.model %></h5>
-                                                <p class="card-text"><%= product.description %></p>
-                                                <p class="card-text"><%= product.plate %></p>
-                                                <p class="card-text"><%= product.manufacture %></p>
-                                                <p class="card-text"><%= product.rentPerDay %></p>
+                                                <h5 class="card-title">
+                                                    <span class="fw-bold"><%= product.manufacture %></span> 
+                                                    <%= product.model %>
+                                                </h5>
+                                                <p class="card-text fw-bold">Rp. <%= product.rentPerDay %> / Hari</p>
                                                 <p class="card-text"><%= product.capacity %></p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                <p class="card-text"><%= product.updatedAt %></p>
                                             </div>
                                         </div>
                                     </div>
@@ -78,6 +82,6 @@
         <script src="js/jquery-3.7.1.js"></script>
         <script src="js/bootstrap.js"></script>
         <script src="https://kit.fontawesome.com/aef74effcf.js" crossorigin="anonymous"></script>
-        <script src="js/dashboard.js"></script>
+        <script src="js/auth.js"></script>
     </body>
 </html>

@@ -1,15 +1,53 @@
 import Products  from "../models/ProductModel.js";
 
+// Format the date string DD MM YYYY
+function formatDateString(inputDateString) {
+    const options = { 
+        month: 'short', 
+        day: 'numeric', 
+        year: 'numeric', 
+        hour: 'numeric', 
+        minute: 'numeric', 
+        hour12: false 
+    };
+    const dateObject = new Date(inputDateString);
+    const formattedDate = dateObject.toLocaleDateString('id-ID', options);
+
+    const result = `Updated at ${formattedDate}`;
+    return result;
+}
+
+
 export const getProducts = async (req, res) => {
     try {
         const carsData = await Products.findAll({
-            attributes: ['uuid', 'plate', 'manufacture', 'model', 'image', 'rentPerDay', 'capacity', 'description'],
+            attributes: [
+                'uuid', 
+                'plate', 
+                'manufacture', 
+                'model',
+                'image', 
+                'rentPerDay', 
+                'capacity', 
+                'description', 
+                'transmission', 
+                'available', 
+                'year',
+                'updatedAt'
+            ],
         });
 
-        console.log('Cars Data:', carsData);
+        // Format the date string DD MM YYYY
+        const formattedCarsData = carsData.map(car => {
+            const formattedDate = formatDateString(car.updatedAt);
+            return { ...car.dataValues, updatedAt: formattedDate };
+        });
 
-        // res.status(200).json({ products: carsData });
-        res.render('index.ejs', { products: carsData });
+        if (req.headers.accept && req.headers.accept.includes('application/json')) {
+            res.status(200).json({ products: formattedCarsData });
+        } else {
+            res.render('dashboard.ejs', { products: formattedCarsData });
+        }
     } catch (error) {
         console.error('Error:', error.message);
         res.status(500).json({ msg: error.message });

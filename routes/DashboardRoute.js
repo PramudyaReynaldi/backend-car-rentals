@@ -1,10 +1,12 @@
 import express from "express";
-import { getUsers } from "../controllers/Users.js";
 import { getProducts } from "../controllers/Products.js";
+import { LoginAdmin } from "../controllers/Auth.js";
+import { requireAuth } from "../middleware/RequireAuth.js"
 
 const router = express.Router();
 
-// router.get("/", getUsers);
-router.get("/", getProducts);
+router.post("/", LoginAdmin);
+router.get("/", (req, res) => res.render("auth.ejs"));
+router.get("/dashboard", requireAuth, getProducts);
 
 export default router;

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add Car</title>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <header class="container-fluid">
+            <nav class="navbar navbar-expand-lg bg-light w-100 dashboard-container">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <form class="d-flex ms-auto" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <div class="social">
+                <a href="https://www.linkedin.com/in/florin-cornea-b5118057/" target="_blank">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+            </div>
+        </header>
+
+        <aside class="sidebar position-fixed top-0">
+            <h3> Dashboard </h3>
+            <ul class="nav nav-tabs d-block border-0">
+                <li>
+                    <a class="active" data-bs-toggle="tab" href="#dashboard">
+                        <i class="fa-solid fa-house-user"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a class="" data-bs-toggle="tab" href="#cars">
+                        <i class="fa-solid fa-car"></i>
+                        Cars
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <section class="container-fluid">
+            <div class="dashboard-container">
+                <div class="tab-content pt-3">
+                    <div class="tab-pane container active" id="dashboard">Dashboard</div>
+                    <div class="tab-pane container fade" id="cars">
+                        <div class="nav-list-cars">
+                            <p class="fw-bold nav-cars">Cars > <span class="fw-medium">List Cars</span></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h3 class="fw-bold">List Cars</h3>
+                                <a href="/cars/add" class="btn btn-primary">+ Add New Car</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="js/jquery-3.7.1.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="https://kit.fontawesome.com/aef74effcf.js" crossorigin="anonymous"></script>
+        <script src="js/auth.js"></script>
+    </body>
+</html>

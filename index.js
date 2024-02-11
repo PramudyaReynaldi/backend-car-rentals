@@ -34,7 +34,8 @@ app.use(session({
     saveUninitialized: true,
     store: store,
     cookie: {
-        secure: 'auto'
+        secure: 'auto',
+        maxAge: 60 * 60 * 1000
     }
 }));
 
@@ -52,6 +53,7 @@ app.engine('html', ejs.renderFile);
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(UserRoute);
 app.use(ProductRoute);
 app.use(AuthRoute);

@@ -19,6 +19,27 @@ export const Login = async (req, res) => {
     res.status(200).json({uuid, name, email, role});
 }
 
+export const LoginAdmin = async (req, res) => {
+    try {
+        const user = await Users.findOne({
+            where: {
+                email: req.body.email,
+                role: 'admin'
+            }
+        });
+        if (!user) return res.render('auth.ejs', { message: 'User not found' });
+
+        const match = await argon2.verify(user.password, req.body.password);
+        if (!match) return res.status(400).json({ message: "Incorrect Password" });
+        req.session.userId = user.uuid;
+        
+        res.redirect('/dashboard');
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).json({ message: error.message });
+    }
+};
+
 export const Register = async (req, res) => {
     const { name, email, password, confPassword, role } = req.body;
     if(password !== confPassword) return res.status(400).json({msg: "Password and Confirm Password do not match"});
