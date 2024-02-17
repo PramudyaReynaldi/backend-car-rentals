@@ -66,8 +66,11 @@
                                                     <%= product.model %>
                                                 </h5>
                                                 <p class="card-text fw-bold">Rp. <%= product.rentPerDay %> / Hari</p>
-                                                <p class="card-text"><%= product.capacity %></p>
-                                                <p class="card-text"><%= product.updatedAt %></p>
+                                                <div class="card-text d-flex align-items-center" style="gap: 6px;">
+                                                    <img src="images/icons/clock.png" alt="Clock">
+                                                    <%= product.updatedAt %>
+                                                </div>
+                                                <button class="btn btn-primary buttonDeleteCar" data-product-id="<%= product.id %>">test</button>
                                             </div>
                                         </div>
                                     </div>
@@ -81,7 +84,9 @@
 
         <script src="js/jquery-3.7.1.js"></script>
         <script src="js/bootstrap.js"></script>
+        <script src="js/alertPopup.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://kit.fontawesome.com/aef74effcf.js" crossorigin="anonymous"></script>
-        <script src="js/auth.js"></script>
+        <script src="js/dashboard.js"></script>
     </body>
 </html>

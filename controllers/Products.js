@@ -22,7 +22,8 @@ export const getProducts = async (req, res) => {
     try {
         const carsData = await Products.findAll({
             attributes: [
-                'uuid', 
+                'uuid',
+                'id',
                 'plate', 
                 'manufacture', 
                 'model',
