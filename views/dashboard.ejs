@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
         <title>Dashboard</title>
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/style.css">
@@ -47,17 +47,21 @@
         <section class="container-fluid">
             <div class="dashboard-container">
                 <div class="tab-content pt-3">
-                    <div class="tab-pane container active" id="dashboard">Dashboard</div>
+                    <div class="tab-pane container active" id="dashboard">
+                        <div class="d-flex justify-content-center">
+                            <img src="images/coming-soon.png" width="500" class="img-coming-soon" height="500" alt="">
+                        </div>
+                    </div>
                     <div class="tab-pane container fade" id="cars">
                         <div class="nav-list-cars">
                             <p class="fw-bold nav-cars">Cars > <span class="fw-medium">List Cars</span></p>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h3 class="fw-bold">List Cars</h3>
                                 <a href="/cars/add" class="btn btn-primary">+ Add New Car</a>
                             </div>
                             <div class="row">
                                 <% products.forEach(product => { %>
-                                    <div class="col-3 mb-3">
+                                    <div class="col-4 mb-3">
                                         <div class="card h-100">
                                             <img src="<%= product.image %>" class="img-fluid" alt="<%= product.model %>">
                                             <div class="card-body">
@@ -70,7 +74,16 @@
                                                     <img src="images/icons/clock.png" alt="Clock">
                                                     <%= product.updatedAt %>
                                                 </div>
-                                                <button class="btn btn-primary buttonDeleteCar" data-product-id="<%= product.id %>">test</button>
+                                                <div class="d-flex gap-2">
+                                                    <button class="button-delete buttonDeleteCar mt-3" data-product-id="<%= product.id %>">
+                                                        <img src="images/icons/trash.png" alt="">
+                                                        Delete
+                                                    </button>
+                                                    <a href="#" class="button-edit mt-3 text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalEditCar">
+                                                        <img src="images/icons/edit.png" alt="">
+                                                        Edit
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -81,6 +94,40 @@
                 </div>
             </div>
         </section>
+
+        <!-- Modal Edit Car -->
+        <% products.forEach(product => { %>
+            <div class="modal fade" id="modalEditCar" tabindex="-1" aria-labelledby="modalEditCarLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="modalEditCarLabel">Edit Car</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="inputManufactureCar" class="form-label">Manufacture</label>
+                                    <input type="name" class="form-control" id="inputManufactureCar">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputModelCar" class="form-label">Model</label>
+                                    <input type="name" class="form-control" id="inputModelCar">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputRentalPerDay" class="form-label">Rental Per Day</label>
+                                    <input type="number" class="form-control" id="inputRentalPerDay">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary buttonSaveEditCar" data-product-id="<%= product.uuid %>">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }); %>   
 
         <script src="js/jquery-3.7.1.js"></script>
         <script src="js/bootstrap.js"></script>

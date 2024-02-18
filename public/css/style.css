@@ -15,7 +15,7 @@ aside.sidebar {
 }
   
 aside.sidebar a {
-    font-size: 12px;
+    font-size: 16px;
     color: #fff;
     display: block;
     padding: 12px;
@@ -65,6 +65,7 @@ aside.sidebar a:hover::before {
 aside.sidebar h3 {
     margin: 0;
     padding: 40px 0;
+    font-size: 24px;
 }
 /* ------------------------ Sidebar End ------------------------ */
 
@@ -94,6 +95,50 @@ aside.sidebar h3 {
     font-size: 12px;
 }
 
+.button-delete {
+    font-size: 14px;
+    font-weight: 700;
+    background: none;
+    border: 1px solid #FA2C5A;
+    color: #FA2C5A;
+    width: 50%;
+    height: auto;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.button-edit {
+    font-size: 14px;
+    font-weight: 700;
+    background-color: #5CB85F;
+    border: 1px solid #5CB85F;
+    color: #FFFFFF;
+    width: 50%;
+    height: auto;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.img-coming-soon {
+    animation: 1.5s ease 0s infinite beat;
+}
+
+@keyframes beat {
+    0%, 50%, 100% { transform: scale(1, 1); }
+    30%, 80% { transform: scale(0.92, 0.95); }
+}
+  
+@keyframes pulse {
+    0%, 50%, 100% {  background: #fee; }
+    30%, 80% { background: #fff; }
+}
+
 /* ------------------------ Dashboard End ------------------------ */
 
 /* ------------------------ Login ------------------------ */
@@ -104,5 +149,4 @@ aside.sidebar h3 {
     background-position: right center;
     background-size: auto 100%;
 }
-    
 /* ------------------------ Login End ------------------------ */
