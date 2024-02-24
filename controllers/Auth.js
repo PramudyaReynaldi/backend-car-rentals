@@ -67,13 +67,7 @@ export const Me = async (req, res) => {
         }
     });
     if(!user) return res.status(404).json({msg: "User not found"});
-    res.status(200).json({ 
-        userId: req.session.userId, 
-        name: user.name,
-        email: user.email,
-        role: user.role,
-        user
-    });
+    res.status(200).json({ userId: req.session.userId, role: user.role, user });
 }
 
 export const logOut = (req, res) => {
