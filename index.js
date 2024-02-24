@@ -24,9 +24,9 @@ const store = new sessionStore({
     db: db
 });
 
-// (async () => {
-//     await db.sync();
-// })();
+(async () => {
+    await db.sync();
+})();
 
 app.use(session({
     secret: process.env.SESS_SECRET,
@@ -60,8 +60,8 @@ app.use(AuthRoute);
 app.use(UploadRoute);
 app.use(DashboardRoute)
 
-// store.sync();
+store.sync();
 
-// app.listen(process.env.APP_PORT, () => {
-//     console.log(`Server running on port http://localhost:${process.env.APP_PORT}`);
-// });
+app.listen(process.env.APP_PORT, () => {
+    console.log(`Server running on port ${process.env.APP_PORT}`);
+});
