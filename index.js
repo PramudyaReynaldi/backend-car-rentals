@@ -11,6 +11,7 @@ import ProductRoute from "./routes/ProductRoute.js";
 import AuthRoute from "./routes/AuthRoute.js";
 import UploadRoute from "./routes/UploadRoute.js";
 import DashboardRoute from "./routes/DashboardRoute.js";
+import { requireAuth } from './middleware/RequireAuth.js';
 import path from "path";
 import ejs from "ejs";
 
@@ -52,6 +53,8 @@ app.use(session({
         maxAge: 60 * 60 * 1000
     }
 }));
+
+app.use(requireAuth);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
