@@ -16,8 +16,8 @@ import ejs from "ejs";
 
 dotenv.config();
 
+const PORT = process.env.APP_PORT || 3000;
 const app = express();
-
 const sessionStore = SequelizeStore(session.Store);
 
 const store = new sessionStore({
@@ -40,7 +40,7 @@ app.use(session({
 }));
 
 app.use(cors({
-    origin: "*",
+    origin: "https://api-car-rentals.onrender.com",
     credentials: true
 }));
 
@@ -62,6 +62,6 @@ app.use(DashboardRoute)
 
 store.sync();
 
-app.listen(process.env.APP_PORT, () => {
-    console.log(`Server running on port ${process.env.APP_PORT}`);
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
