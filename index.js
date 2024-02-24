@@ -40,7 +40,7 @@ app.use(session({
 }));
 
 app.use(cors({
-    origin: "https://api-car-rentals.onrender.com",
+    origin: "*",
     credentials: true
 }));
 
