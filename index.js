@@ -24,12 +24,21 @@ const store = new sessionStore({
     db: db
 });
 
+// (async () => {
+//     await db.sync();
+// })();
+
 (async () => {
-    await db.sync();
+    try {
+        await db.authenticate();
+        console.log('Connection to the database has been established successfully.');
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+    }
 })();
 
 app.use(cors({
-    origin: "*",
+    origin: "http://localhost:5173",
     credentials: true
 }));
 
