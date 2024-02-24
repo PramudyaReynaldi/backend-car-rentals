@@ -40,7 +40,7 @@ app.use(session({
 }));
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "*",
     credentials: true
 }));
 
@@ -62,6 +62,6 @@ app.use(DashboardRoute)
 
 // store.sync();
 
-app.listen(process.env.APP_PORT, () => {
-    console.log(`Server running on port http://localhost:${process.env.APP_PORT}`);
-});
+// app.listen(process.env.APP_PORT, () => {
+//     console.log(`Server running on port http://localhost:${process.env.APP_PORT}`);
+// });
