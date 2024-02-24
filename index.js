@@ -28,6 +28,11 @@ const store = new sessionStore({
     await db.sync();
 })();
 
+app.use(cors({
+    origin: "*",
+    credentials: true
+}));
+
 app.use(session({
     secret: process.env.SESS_SECRET,
     resave: false,
@@ -37,11 +42,6 @@ app.use(session({
         secure: 'auto',
         maxAge: 60 * 60 * 1000
     }
-}));
-
-app.use(cors({
-    origin: "*",
-    credentials: true
 }));
 
 const __filename = fileURLToPath(import.meta.url);
