@@ -71,7 +71,8 @@ export const Me = async (req, res) => {
         userId: req.session.userId, 
         name: user.name,
         email: user.email,
-        role: user.role
+        role: user.role,
+        user
     });
 }
 
