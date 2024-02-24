@@ -4,9 +4,9 @@ import { requireAuth } from "../middleware/RequireAuth.js";
 
 const router = express.Router();
 
-router.get("/me", requireAuth, Me);
-router.post("/login", Login);
-router.delete("/logout", logOut);
-router.post("/register", Register);
+router.get("/api/v1/me", requireAuth, Me);
+router.post("/api/v1/login", Login);
+router.delete("/api/v1/logout", logOut);
+router.post("/api/v1/register", Register);
 
 export default router;
