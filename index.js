@@ -16,8 +16,8 @@ import ejs from "ejs";
 
 dotenv.config();
 
-const PORT = process.env.APP_PORT || 3000;
 const app = express();
+
 const sessionStore = SequelizeStore(session.Store);
 
 const store = new sessionStore({
@@ -28,30 +28,20 @@ const store = new sessionStore({
 //     await db.sync();
 // })();
 
-(async () => {
-    try {
-        await db.authenticate();
-        console.log('Connection to the database has been established successfully.');
-    } catch (error) {
-        console.error('Unable to connect to the database:', error);
-    }
-})();
-
-app.use(cors({
-    origin: "http://localhost:5173",
-    credentials: true
-}));
-
 app.use(session({
     secret: process.env.SESS_SECRET,
     resave: false,
     saveUninitialized: true,
     store: store,
     cookie: {
-        secure: true,
-        sameSite: 'none',
+        secure: 'auto',
         maxAge: 60 * 60 * 1000
     }
+}));
+
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
 }));
 
 const __filename = fileURLToPath(import.meta.url);
@@ -70,8 +60,8 @@ app.use(AuthRoute);
 app.use(UploadRoute);
 app.use(DashboardRoute)
 
-store.sync();
+// store.sync();
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+app.listen(process.env.APP_PORT, () => {
+    console.log(`Server running on port http://localhost:${process.env.APP_PORT}`);
 });
