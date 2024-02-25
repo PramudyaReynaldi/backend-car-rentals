@@ -59,7 +59,6 @@ export const Register = async (req, res) => {
 }
 
 export const Me = async (req, res) => {
-    if(!req.session.userId) return res.status(401).json({msg: "Mohon Login Terlebih Dahulu"});
     const user = await Users.findOne({
         attributes: ['uuid', 'name', 'email', 'role'],
         where: {
