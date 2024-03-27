@@ -10,7 +10,6 @@ import UserRoute from "./routes/UserRoute.js";
 import ProductRoute from "./routes/ProductRoute.js";
 import AuthRoute from "./routes/AuthRoute.js";
 import UploadRoute from "./routes/UploadRoute.js";
-import DashboardRoute from "./routes/DashboardRoute.js";
 import path from "path";
 import ejs from "ejs";
 
@@ -24,9 +23,9 @@ const store = new sessionStore({
     db: db
 });
 
-// (async () => {
-//     await db.sync();
-// })();
+(async () => {
+    await db.sync();
+})();
 
 app.use(session({
     secret: process.env.SESS_SECRET,
@@ -58,9 +57,8 @@ app.use(UserRoute);
 app.use(ProductRoute);
 app.use(AuthRoute);
 app.use(UploadRoute);
-app.use(DashboardRoute)
 
-// store.sync();
+store.sync();
 
 app.listen(process.env.APP_PORT, () => {
     console.log(`Server running on port http://localhost:${process.env.APP_PORT}`);
