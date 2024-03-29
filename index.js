@@ -9,7 +9,7 @@ import SequelizeStore from "connect-session-sequelize";
 import UserRoute from "./routes/UserRoute.js";
 import ProductRoute from "./routes/ProductRoute.js";
 import AuthRoute from "./routes/AuthRoute.js";
-import UploadRoute from "./routes/UploadRoute.js";
+// import UploadRoute from "./routes/UploadRoute.js";
 import path from "path";
 import ejs from "ejs";
 
@@ -39,7 +39,10 @@ app.use(session({
 }));
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: [
+        "http://localhost:3000",
+        "http://localhost:5173"
+    ],
     credentials: true
 }));
 
@@ -56,7 +59,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(UserRoute);
 app.use(ProductRoute);
 app.use(AuthRoute);
-app.use(UploadRoute);
+// app.use(UploadRoute);
 
 store.sync();
 

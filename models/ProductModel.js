@@ -1,4 +1,3 @@
-// productsModel.js
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
 
@@ -42,9 +41,8 @@ const Products = db.define(
         },
         image: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
-                notEmpty: true,
                 isUrl: true,
             },
         },
