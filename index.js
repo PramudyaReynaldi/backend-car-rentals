@@ -9,7 +9,6 @@ import SequelizeStore from "connect-session-sequelize";
 import UserRoute from "./routes/UserRoute.js";
 import ProductRoute from "./routes/ProductRoute.js";
 import AuthRoute from "./routes/AuthRoute.js";
-// import UploadRoute from "./routes/UploadRoute.js";
 import path from "path";
 import ejs from "ejs";
 
