@@ -84,6 +84,13 @@ const Products = db.define(
                 len: [1, 20],
             },
         },
+        typeDriver: {
+            type: DataTypes.ENUM("Lepas Kunci", "Dengan Supir"),
+            allowNull: false,
+            validate: {
+                notEmpty: true,
+            },
+        },
         available: {
             type: DataTypes.BOOLEAN,
             allowNull: false,

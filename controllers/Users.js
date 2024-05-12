@@ -7,7 +7,6 @@ export const getUsers = async (req, res) => {
             attributes: ['uuid', 'name', 'email', 'role']
         });
         res.status(200).json(response);
-        // res.render('index.ejs', { users: response });
     } catch (error) {
         res.status(500).json({msg: error.message});
     }
